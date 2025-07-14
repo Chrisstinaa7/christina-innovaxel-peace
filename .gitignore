@@ -1,17 +1,18 @@
-# Dependencies
-node_modules/
+
+# Node dependencies
+backend/node_modules/
 
 # Environment variables
-.env
+backend/.env
 
 # Logs
-logs/
+backend/logs/
 *.log
 
-# OS/system files
+# System files
 .DS_Store
 Thumbs.db
 
-# IDE/editor settings (optional)
+# Editor folders 
 .vscode/
 .idea/
