@@ -22,3 +22,20 @@ exports.createShortURL = async (req, res) => {
         res.status(500).json({ error: 'Server error' });
     }
 };
+
+// GET /shorten/:shortCode
+exports.getOriginalURL = async (req, res) => {
+    const { shortCode } = req.params;
+
+    try {
+        const urlEntry = await URL.findOne({ shortCode });
+
+        if (!urlEntry) {
+            return res.status(404).json({ error: 'Short URL not found' });
+        }
+
+        res.status(200).json(urlEntry);
+    } catch (error) {
+        res.status(500).json({ error: 'Server error' });
+    }
+};
