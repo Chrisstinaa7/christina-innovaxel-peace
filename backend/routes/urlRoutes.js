@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createShortURL } = require('backend/controllers/urlController.js');
+const { createShortURL } = require('../controllers/urlcontroller.js');
 
 router.post('/', createShortURL);
 
