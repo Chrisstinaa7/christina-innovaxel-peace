@@ -81,3 +81,26 @@ exports.deleteURL = async (req, res) => {
         res.status(500).json({ error: 'Server error' });
     }
 };
+// GET /shorten/:shortCode/stats
+exports.getStats = async (req, res) => {
+    const { shortCode } = req.params;
+
+    try {
+        const urlDoc = await URL.findOne({ shortCode });
+
+        if (!urlDoc) {
+            return res.status(404).json({ error: 'Short URL not found' });
+        }
+
+        res.status(200).json({
+            id: urlDoc._id,
+            url: urlDoc.url,
+            shortCode: urlDoc.shortCode,
+            createdAt: urlDoc.createdAt,
+            updatedAt: urlDoc.updatedAt,
+            accessCount: urlDoc.accessCount
+        });
+    } catch (err) {
+        res.status(500).json({ error: 'Server error' });
+    }
+};
