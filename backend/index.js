@@ -13,3 +13,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 const urlRoutes = require('./routes/urlRoutes');
 app.use('/shorten', urlRoutes);
+
+app.listen(5000, () => {
+    console.log('Server running on port 5000');
+});
